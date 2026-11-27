@@ -39,7 +39,7 @@ To swap one in, save a square WebP in `assets/img/logos/` and replace the monogr
 ```
 
 In place: `ju.webp` (Jahangirnagar University), `shk.webp` (Shamsul Haque Khan School and College),
-`chatkhil.webp` (Chatkhil Pachgaon Government High School). Still a monogram: DEEF (add `deef.webp`).
+`chatkhil.webp` (Chatkhil Pachgaon Government High School), `deef.webp` (Deep Ecology Environmental Forum).
 
 ## Run locally
 
