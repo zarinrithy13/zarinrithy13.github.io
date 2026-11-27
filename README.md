@@ -38,8 +38,8 @@ To swap one in, save a square WebP in `assets/img/logos/` and replace the monogr
 <span class="org__logo org__logo--sm"><img src="assets/img/logos/ju.webp" alt="Jahangirnagar University logo" width="56" height="56" loading="lazy"></span>
 ```
 
-Suggested file names: `ju.webp` (Jahangirnagar University), `shk.webp` (Shamsul Haque Khan School and College),
-`deef.webp` (Deep Ecology Environmental Forum). `chatkhil.webp` is already in place.
+In place: `ju.webp` (Jahangirnagar University), `shk.webp` (Shamsul Haque Khan School and College),
+`chatkhil.webp` (Chatkhil Pachgaon Government High School). Still a monogram: DEEF (add `deef.webp`).
 
 ## Run locally
 
