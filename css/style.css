@@ -515,6 +515,52 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .edu-card__logos { display: flex; flex-direction: column; gap: .5rem; flex: none; }
 .edu-card__body { min-width: 0; }
 
+/* ---------- Beyond philosophy: hobbies + gallery ---------- */
+.beyond { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 1.2rem; margin-bottom: 2rem; }
+.hobby {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;
+  transition: transform .35s var(--ease), border-color .3s, box-shadow .3s;
+}
+.hobby:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: var(--shadow); }
+.hobby > i { font-size: 1.2rem; color: var(--primary); width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--primary-soft); margin-bottom: .9rem; }
+.hobby h3 { font-size: 1.05rem; margin-bottom: .45rem; }
+.hobby p { font-size: .92rem; color: var(--text-muted); margin: 0 0 .9rem; }
+.hobby .chips li { font-size: .82rem; padding: .38rem .72rem; }
+
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.gallery__item { margin: 0; position: relative; border-radius: var(--radius); overflow: hidden; background: var(--surface-2); border: 1px solid var(--border); }
+.gallery__btn { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.gallery__btn img { width: 100%; aspect-ratio: 3 / 4; height: auto; object-fit: cover; transition: transform .8s var(--ease); }
+.gallery__item:hover .gallery__btn img { transform: scale(1.05); }
+.gallery__btn:focus-visible { outline: 3px solid var(--primary); outline-offset: -3px; }
+.gallery__item figcaption {
+  position: absolute; left: .7rem; bottom: .7rem; padding: .3rem .7rem; border-radius: 999px; pointer-events: none;
+  font-size: .78rem; font-weight: 600; color: #fff; background: rgba(10, 24, 40, .6);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+
+.lightbox {
+  border: 0; padding: 0; background: transparent; max-width: min(92vw, 820px); max-height: 92vh; overflow: visible;
+}
+.lightbox::backdrop { background: rgba(5, 14, 24, .85); backdrop-filter: blur(4px); }
+.lightbox img { max-width: 100%; max-height: 88vh; border-radius: var(--radius); box-shadow: 0 30px 60px -20px rgba(0,0,0,.7); }
+.lightbox__close {
+  position: absolute; top: -.9rem; right: -.9rem; width: 42px; height: 42px; border-radius: 50%; border: 0;
+  background: var(--primary); color: var(--primary-ink); box-shadow: var(--shadow); font-size: 1.1rem; z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .beyond { grid-template-columns: 1fr 1fr; }
+  .hobby--anime { grid-column: 1 / -1; }
+}
+@media (max-width: 860px) {
+  .gallery { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .beyond { grid-template-columns: 1fr; }
+  .lightbox__close { top: .5rem; right: .5rem; }
+}
+
 /* ---------- Contact ---------- */
 .contact {
   position: relative; text-align: center; max-width: 760px; margin: 0 auto; padding: 3rem 2rem;
@@ -558,6 +604,15 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .reveal:nth-child(6) { transition-delay: .40s; }
 
 /* ---------- Responsive ---------- */
+/* eight nav links: keep them on one line before the burger menu takes over */
+.nav__links a { white-space: nowrap; }
+@media (max-width: 1180px) and (min-width: 861px) {
+  .nav__name { display: none; }
+  .nav__links { gap: .1rem; }
+  .nav__links a { padding: .5rem .6rem; font-size: .88rem; }
+  .nav__links a.is-active::after { left: .6rem; right: .6rem; }
+}
+
 @media (max-width: 1024px) {
   .hero__inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
   .float-card--1 { left: 0; } .float-card--2 { right: -4%; } .float-card--3 { left: 2%; } .float-card--4 { right: -6%; }

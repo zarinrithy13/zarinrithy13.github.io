@@ -140,6 +140,24 @@
     setTimeout(tick, 600);
   }
 
+  /* ---------- Gallery lightbox ---------- */
+  const lightbox = $('#lightbox');
+  if (lightbox && typeof lightbox.showModal === 'function') {
+    const lbImg = $('img', lightbox);
+    let opener = null;
+    $$('.gallery__btn').forEach(btn => btn.addEventListener('click', () => {
+      const img = $('img', btn);
+      lbImg.src = btn.dataset.full;
+      lbImg.alt = img ? img.alt : '';
+      opener = btn;
+      lightbox.showModal();
+    }));
+    $('.lightbox__close', lightbox).addEventListener('click', () => lightbox.close());
+    // click on the dark backdrop (outside the image) closes too
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.close(); });
+    lightbox.addEventListener('close', () => { lbImg.src = ''; if (opener) opener.focus(); });
+  }
+
   /* ---------- Footer year ---------- */
   $('#year').textContent = new Date().getFullYear();
 
