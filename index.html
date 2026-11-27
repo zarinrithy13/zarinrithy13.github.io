@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zarin Saima Rithy · Philosophy Researcher (Deep Ecology / Spinoza)</title>
+  <meta name="description" content="Portfolio of Zarin Saima Rithy, an M.A. student in Philosophy at Jahangirnagar University researching environmental philosophy, deep ecology and Spinoza's metaphysics.">
+  <meta name="author" content="Zarin Saima Rithy">
+  <meta name="theme-color" content="#f3f9fd">
+  <link rel="canonical" href="https://zarinrithy13.github.io/">
+
+  <!-- Open Graph / LinkedIn preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Zarin Saima Rithy · Philosophy Researcher">
+  <meta property="og:description" content="M.A. in Philosophy at Jahangirnagar University. Research on Spinoza's metaphysics and Arne Naess's deep ecology. Honours CGPA 3.78, 2nd in the merit list.">
+  <meta property="og:url" content="https://zarinrithy13.github.io/">
+  <meta property="og:image" content="https://zarinrithy13.github.io/assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Inter for UI, Lora for quotations -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Apply saved theme before paint to avoid a flash -->
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#about">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ================= NAV ================= -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#home" class="nav__logo" aria-label="Home">
+        <span class="nav__mark">ZR</span>
+        <span class="nav__name">Zarin Saima Rithy</span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#research">Research</a>
+        <a href="#ideas">Key Ideas</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark / light mode" title="Toggle theme">
+          <i class="fa-solid fa-sun theme-toggle__sun" aria-hidden="true"></i>
+          <i class="fa-solid fa-moon theme-toggle__moon" aria-hidden="true"></i>
+        </button>
+        <button class="nav__burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="home">
+      <div class="hero__bg" aria-hidden="true">
+        <span class="blob blob--1"></span>
+        <span class="blob blob--2"></span>
+        <span class="grid-lines"></span>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="hero__eyebrow reveal"><span class="dot"></span> M.A. in Philosophy · Jahangirnagar University</p>
+          <h1 class="hero__title reveal">
+            Hi, I'm <span class="accent">Zarin Saima Rithy</span>
+          </h1>
+          <p class="hero__role reveal">
+            Philosophy Researcher ·
+            <span class="typed" id="typed" aria-live="polite"></span><span class="caret" aria-hidden="true"></span>
+          </p>
+          <p class="hero__lead reveal">
+            I study how we think about nature and our place in it. My Honours research put
+            <strong>Baruch Spinoza's metaphysics</strong> in dialogue with <strong>Arne Naess's deep ecology</strong>,
+            asking whether a seventeenth-century picture of one interconnected reality can carry the moral
+            weight of a modern environmental ethic.
+          </p>
+
+          <div class="hero__cta reveal">
+            <a class="btn btn--primary" href="#research"><i class="fa-solid fa-book-open"></i> View Research</a>
+            <a class="btn btn--ghost" href="#contact"><i class="fa-solid fa-envelope"></i> Get in Touch</a>
+          </div>
+
+          <div class="hero__social reveal">
+            <a href="mailto:saimazarin15002@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://deepecologybd.org/the-deef-team/" target="_blank" rel="noopener" aria-label="Deep Ecology Environmental Forum team page"><i class="fa-solid fa-seedling"></i></a>
+          </div>
+        </div>
+
+        <div class="hero__visual reveal">
+          <div class="portrait">
+            <div class="portrait__ring" aria-hidden="true"></div>
+            <div class="portrait__glow" aria-hidden="true"></div>
+            <picture>
+              <source srcset="assets/img/headshot.webp" type="image/webp">
+              <img src="assets/img/headshot.png" alt="Portrait of Zarin Saima Rithy" width="720" height="866" fetchpriority="high">
+            </picture>
+            <div class="float-card float-card--1" aria-hidden="true">
+              <i class="fa-solid fa-leaf"></i><span>Deep Ecology</span>
+            </div>
+            <div class="float-card float-card--2" aria-hidden="true">
+              <i class="fa-solid fa-infinity"></i><span>Spinoza</span>
+            </div>
+            <div class="float-card float-card--3" aria-hidden="true">
+              <i class="fa-solid fa-scale-balanced"></i><span>Ethics</span>
+            </div>
+            <div class="float-card float-card--4" aria-hidden="true">
+              <i class="fa-solid fa-earth-asia"></i><span>Metaphysics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-hint" aria-label="Scroll down">
+        <span class="scroll-hint__mouse"><span></span></span>
+      </a>
+    </section>
+
+    <!-- ================= STATS ================= -->
+    <section class="stats" aria-label="Highlights">
+      <div class="container stats__grid">
+        <div class="stat reveal"><span class="stat__num" data-count="3.78" data-decimals="2">0</span><span class="stat__label">Honours CGPA (out of 4.00)</span></div>
+        <div class="stat reveal"><span class="stat__num" data-count="2" data-suffix="nd">0</span><span class="stat__label">Position in the Honours merit list</span></div>
+        <div class="stat reveal"><span class="stat__num" data-count="12" data-suffix="">0</span><span class="stat__label">Chapters in my Honours thesis</span></div>
+        <div class="stat reveal"><span class="stat__num" data-count="16" data-suffix="">0</span><span class="stat__label">Points of convergence examined</span></div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="section" id="about">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__kicker">01 — About</span>
+          <h2 class="section__title">Thinking carefully about the world we share</h2>
+        </header>
+
+        <div class="about">
+          <div class="about__text reveal">
+            <p>
+              I'm a philosophy graduate from <strong>Jahangirnagar University</strong>, now pursuing my
+              <strong>Master of Arts in Philosophy</strong> there. I completed my B.A. (Honours) with a
+              <strong>CGPA of 3.78 out of 4.00</strong>, placing <strong>2nd in my batch</strong> on the overall
+              Honours result and first in the third-year examination.
+            </p>
+            <p>
+              My interests sit where metaphysics meets ethics: what kind of thing nature is, and what, if anything,
+              we owe to it. Under the supervision of <strong>Professor Dr. Md. Munir Hossain Talukder</strong> I wrote a
+              twelve-chapter critical study of Spinoza and Arne Naess, and I am a member of the
+              <strong>Deep Ecology Environmental Forum (DEEF)</strong>, a research centre based at Jahangirnagar University.
+              Alongside my studies I teach school and college students in Dhaka.
+            </p>
+            <ul class="about__facts">
+              <li><i class="fa-solid fa-location-dot"></i> Dhaka, Bangladesh</li>
+              <li><i class="fa-solid fa-graduation-cap"></i> M.A. in Philosophy (ongoing), Jahangirnagar University</li>
+              <li><i class="fa-solid fa-language"></i> Bangla (native) · English (academic)</li>
+            </ul>
+          </div>
+
+          <div class="about__cards">
+            <article class="info-card reveal">
+              <i class="fa-solid fa-leaf"></i>
+              <h3>Environmental Philosophy</h3>
+              <p>Deep ecology, intrinsic value and the ethics of our relationship with non-human life.</p>
+            </article>
+            <article class="info-card reveal">
+              <i class="fa-solid fa-infinity"></i>
+              <h3>Early Modern Thought</h3>
+              <p>Spinoza's <em>Ethics</em>: substance, modes, <em>conatus</em> and <em>Deus sive Natura</em>.</p>
+            </article>
+            <article class="info-card reveal">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <h3>Critical Analysis</h3>
+              <p>Comparing philosophical systems closely, finding where they agree and where they quietly diverge.</p>
+            </article>
+            <article class="info-card reveal">
+              <i class="fa-solid fa-chalkboard-user"></i>
+              <h3>Teaching</h3>
+              <p>Tutoring English-version students from primary level to higher secondary.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EXPERTISE ================= -->
+    <section class="section section--alt" id="expertise">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__kicker">02 — Expertise</span>
+          <h2 class="section__title">What I work on</h2>
+        </header>
+
+        <div class="skills">
+          <div class="skill-group reveal">
+            <h3><i class="fa-solid fa-compass"></i> Research Areas</h3>
+            <ul class="chips">
+              <li><i class="fa-solid fa-leaf"></i> Environmental Philosophy</li>
+              <li><i class="fa-solid fa-seedling"></i> Deep Ecology</li>
+              <li><i class="fa-solid fa-infinity"></i> Spinoza Studies</li>
+              <li><i class="fa-solid fa-earth-asia"></i> Metaphysics</li>
+              <li><i class="fa-solid fa-scale-balanced"></i> Ethics</li>
+              <li><i class="fa-solid fa-landmark"></i> Philosophy of Religion</li>
+            </ul>
+          </div>
+
+          <div class="skill-group reveal">
+            <h3><i class="fa-solid fa-book"></i> Thinkers &amp; Texts</h3>
+            <ul class="chips">
+              <li>Baruch Spinoza · <em>Ethics</em></li>
+              <li>Arne Naess</li>
+              <li>Warwick Fox</li>
+              <li>Freya Mathews</li>
+              <li>Val Plumwood</li>
+              <li>Michael Zimmerman</li>
+            </ul>
+          </div>
+
+          <div class="skill-group reveal">
+            <h3><i class="fa-solid fa-pen-nib"></i> Academic Skills</h3>
+            <ul class="chips">
+              <li>Critical Analysis</li>
+              <li>Comparative Philosophy</li>
+              <li>Academic Writing</li>
+              <li>Literature Review</li>
+              <li>Textual Interpretation</li>
+              <li>Argument Reconstruction</li>
+            </ul>
+          </div>
+
+          <div class="skill-group reveal">
+            <h3><i class="fa-solid fa-chalkboard-user"></i> Teaching</h3>
+            <ul class="chips">
+              <li><i class="fa-solid fa-language"></i> English</li>
+              <li><i class="fa-solid fa-square-root-variable"></i> Mathematics</li>
+              <li><i class="fa-solid fa-flask"></i> Science</li>
+              <li><i class="fa-solid fa-book-open"></i> Humanities</li>
+              <li>Primary to Higher Secondary</li>
+              <li>English Version Curriculum</li>
+            </ul>
+          </div>
+
+          <div class="skill-group reveal">
+            <h3><i class="fa-solid fa-comments"></i> Languages</h3>
+            <ul class="chips">
+              <li>Bangla · Native</li>
+              <li>English · Academic &amp; teaching</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= RESEARCH ================= -->
+    <section class="section" id="research">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__kicker">03 — Research</span>
+          <h2 class="section__title">Honours thesis</h2>
+        </header>
+
+        <article class="research reveal">
+          <figure class="research__media">
+            <picture>
+              <source srcset="assets/img/thesis.webp" type="image/webp">
+              <img src="assets/img/thesis.jpg" alt="Zarin Saima Rithy holding her bound Honours research paper on Spinoza and Arne Naess" loading="lazy" width="900" height="1125">
+            </picture>
+            <figcaption><i class="fa-solid fa-book"></i> The bound research paper, Jahangirnagar University campus</figcaption>
+          </figure>
+
+          <div class="research__body">
+            <span class="research__kind"><i class="fa-solid fa-feather-pointed"></i> B.A. Honours Research · Philosophy</span>
+            <h3>A Critical Analysis of Spinoza's Metaphysics and Arne Naess's Deep Ecology: Sixteen Points of Convergence</h3>
+            <p>
+              Arne Naess, founder of the deep ecology movement, named Spinoza as a cornerstone of his thought and
+              listed sixteen points where the two meet. This paper tests that claim. It agrees that Spinoza's
+              <em>Deus sive Natura</em>, one substance of which humans, animals and plants are all modes, breaks down
+              the wall between people and nature. It then sets out the places where the systems pull apart, above all
+              that <strong>Spinoza describes</strong> an amoral nature while <strong>deep ecology prescribes</strong> duties
+              towards it.
+            </p>
+            <p>
+              The conclusion: deep ecology is not simply Spinoza applied to the environment but a
+              <strong>creative transformation</strong> of him, one that gives a metaphysical picture of unity the ethical
+              commitment needed for problems such as climate change and environmental justice.
+            </p>
+
+            <ul class="research__meta">
+              <li><i class="fa-solid fa-user-tie"></i><div><b>Supervisor</b>Prof. Dr. Md. Munir Hossain Talukder</div></li>
+              <li><i class="fa-solid fa-building-columns"></i><div><b>Department</b>Philosophy, Jahangirnagar University</div></li>
+              <li><i class="fa-solid fa-layer-group"></i><div><b>Scope</b>12 chapters with bibliography</div></li>
+              <li><i class="fa-solid fa-award"></i><div><b>Examination</b>4th Year B.A. Honours, 2024</div></li>
+            </ul>
+
+            <ul class="tags">
+              <li>Spinoza</li><li>Arne Naess</li><li>Deep Ecology</li><li>Metaphysics</li><li>Environmental Ethics</li><li>Self-Realization</li>
+            </ul>
+
+            <div class="research__links">
+              <span><i class="fa-regular fa-calendar"></i> Submitted February 2026</span>
+              <a href="#contact"><i class="fa-solid fa-envelope-open-text"></i> Request a copy</a>
+            </div>
+          </div>
+        </article>
+
+        <div class="chapters reveal">
+          <h3 class="chapters__title"><i class="fa-solid fa-list-ol"></i> Chapters</h3>
+          <ol>
+            <li>Introduction</li>
+            <li>Spinoza and Arne Naess's Deep Ecology</li>
+            <li><span>Spinoza's Metaphysics in the <em>Ethics</em></span></li>
+            <li>Ethics, Ecology, and Metaphysics</li>
+            <li>The Expanding Moral Circle</li>
+            <li>Striving for Ecological Self-Realization</li>
+            <li>Beyond Human-Centric Ethics</li>
+            <li>Rights, Power, and Ecological Responsibility</li>
+            <li>Time and Interdependence</li>
+            <li>God's Relevance to Ecology</li>
+            <li>Power as Responsibility</li>
+            <li>Conclusion</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= KEY IDEAS ================= -->
+    <section class="section section--alt" id="ideas">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__kicker">04 — Key Ideas</span>
+          <h2 class="section__title">Arguments from the thesis</h2>
+          <p class="section__intro">The questions that run through my research, in brief.</p>
+        </header>
+
+        <div class="ideas">
+          <article class="idea reveal">
+            <span class="idea__num">01</span>
+            <i class="fa-solid fa-infinity"></i>
+            <h3>God or Nature</h3>
+            <p>For Spinoza there is one substance and everything is an expression of it. Naess saw in this a world where humans are not masters, only parts of an interconnected whole.</p>
+          </article>
+          <article class="idea reveal">
+            <span class="idea__num">02</span>
+            <i class="fa-solid fa-scale-unbalanced"></i>
+            <h3>Describing vs. prescribing</h3>
+            <p>Spinoza's nature has no built-in "good" or "bad". Deep ecology says we <em>ought</em> to protect it. Turning neutral fact into moral duty is the central gap the thesis examines.</p>
+          </article>
+          <article class="idea reveal">
+            <span class="idea__num">03</span>
+            <i class="fa-solid fa-hand-holding-heart"></i>
+            <h3>Power as responsibility</h3>
+            <p>If a being's right equals its power, technology could seem to license destruction. Deep ecology reads human power the other way: the more we can do, the more we must protect.</p>
+          </article>
+          <article class="idea reveal">
+            <span class="idea__num">04</span>
+            <i class="fa-solid fa-seedling"></i>
+            <h3>Ecological self-realization</h3>
+            <p>Naess turns Spinoza's <em>conatus</em>, each thing's striving to persist, into Self-realization, where the "Self" widens to include the whole biosphere.</p>
+          </article>
+          <article class="idea reveal">
+            <span class="idea__num">05</span>
+            <i class="fa-solid fa-hourglass-half"></i>
+            <h3>Time and interdependence</h3>
+            <p>Spinoza viewed reality under the aspect of eternity. Environmental ethics needs time: evolution, the climate crisis and the claims of future generations.</p>
+          </article>
+          <article class="idea reveal">
+            <span class="idea__num">06</span>
+            <i class="fa-solid fa-people-group"></i>
+            <h3>The expanding moral circle</h3>
+            <p>Deep ecology extends intrinsic value beyond humans to all living beings, moving ethics past a purely human-centred view.</p>
+          </article>
+        </div>
+
+        <blockquote class="quote reveal">
+          <p>Naess took Spinoza's metaphysical map and added a moral compass to it.</p>
+          <cite>— from the thesis summary</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ================= EXPERIENCE ================= -->
+    <section class="section" id="experience">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__kicker">05 — Experience</span>
+          <h2 class="section__title">Research &amp; teaching</h2>
+        </header>
+
+        <div class="timeline">
+          <article class="timeline__item reveal">
+            <div class="timeline__marker"></div>
+            <div class="timeline__card">
+              <div class="timeline__meta">
+                <span class="timeline__date"><i class="fa-regular fa-calendar"></i> 2025 – Present</span>
+                <span class="timeline__loc"><i class="fa-solid fa-location-dot"></i> Jahangirnagar University, Savar</span>
+              </div>
+              <div class="org">
+                <span class="org__logo org__logo--mono" aria-hidden="true">DEEF</span>
+                <div>
+                  <h3>Member</h3>
+                  <p class="timeline__company">Deep Ecology Environmental Forum (DEEF) — Research Centre</p>
+                </div>
+              </div>
+              <ul class="points">
+                <li>Member of the DEEF team (2025 onwards), a fully voluntary research centre and environmental forum based at Jahangirnagar University.</li>
+                <li>The team brings together faculty and researchers from Jahangirnagar, BRAC, ULAB, City University, IUBAT and the University of Barishal, advised by Professor Dr. Md. Munir Hossain Talukder.</li>
+                <li>Contributes a research background in the philosophical foundations of deep ecology in Spinoza.</li>
+              </ul>
+              <ul class="tags">
+                <li>Deep Ecology</li><li>Environmental Philosophy</li><li>Research</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline__item reveal">
+            <div class="timeline__marker"></div>
+            <div class="timeline__card">
+              <div class="timeline__meta">
+                <span class="timeline__date"><i class="fa-regular fa-calendar"></i> 2024 – 2026</span>
+                <span class="timeline__loc"><i class="fa-solid fa-location-dot"></i> Department of Philosophy, JU</span>
+              </div>
+              <div class="org">
+                <span class="org__logo org__logo--mono" aria-hidden="true">JU</span>
+                <div>
+                  <h3>Undergraduate Researcher</h3>
+                  <p class="timeline__company">Jahangirnagar University</p>
+                </div>
+              </div>
+              <ul class="points">
+                <li>Wrote a twelve-chapter critical analysis of Spinoza's metaphysics and Arne Naess's deep ecology under Professor Dr. Md. Munir Hossain Talukder.</li>
+                <li>Tested Naess's sixteen "points of convergence" against Spinoza's <em>Ethics</em> and identified where the two systems diverge.</li>
+                <li>Engaged with the secondary literature, including Fox, Mathews, Rothenberg, Zimmerman and Plumwood.</li>
+              </ul>
+              <ul class="tags">
+                <li>Spinoza</li><li>Arne Naess</li><li>Metaphysics</li><li>Academic Writing</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline__item reveal">
+            <div class="timeline__marker"></div>
+            <div class="timeline__card">
+              <div class="timeline__meta">
+                <span class="timeline__date"><i class="fa-regular fa-calendar"></i> 2023 – Present</span>
+                <span class="timeline__loc"><i class="fa-solid fa-location-dot"></i> Kalabagan &amp; Green Road, Dhaka</span>
+              </div>
+              <div class="org">
+                <span class="org__logo"><i class="fa-solid fa-chalkboard-user" style="font-size:1.5rem;color:#1f6fa8" aria-hidden="true"></i></span>
+                <div>
+                  <h3>Private Tutor (English Version)</h3>
+                  <p class="timeline__company">Independent</p>
+                </div>
+              </div>
+              <ul class="points">
+                <li>Teaches English-version students from primary level through higher secondary.</li>
+                <li>Covers English, mathematics, science and humanities subjects.</li>
+              </ul>
+              <ul class="tags">
+                <li>English</li><li>Mathematics</li><li>Science</li><li>Humanities</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EDUCATION & ACHIEVEMENTS ================= -->
+    <section class="section section--alt" id="education">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__kicker">06 — Education &amp; Achievements</span>
+          <h2 class="section__title">Background</h2>
+        </header>
+
+        <div class="edu">
+          <div class="edu__col">
+            <h3 class="edu__heading reveal"><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+
+            <article class="edu-card edu-card--logo reveal">
+              <div class="edu-card__logos">
+                <span class="org__logo org__logo--sm org__logo--mono" aria-hidden="true">JU</span>
+              </div>
+              <div class="edu-card__body">
+                <span class="edu-card__year">Ongoing <span class="badge-live">Current</span></span>
+                <h4>Master of Arts (M.A.) in Philosophy</h4>
+                <p>Department of Philosophy, Jahangirnagar University, Savar, Dhaka</p>
+              </div>
+            </article>
+
+            <article class="edu-card edu-card--logo reveal">
+              <div class="edu-card__logos">
+                <span class="org__logo org__logo--sm org__logo--mono" aria-hidden="true">JU</span>
+              </div>
+              <div class="edu-card__body">
+                <span class="edu-card__year">Session 2020 – 21 · 50th Batch</span>
+                <h4>Bachelor of Arts (Honours) in Philosophy</h4>
+                <p>Department of Philosophy, Jahangirnagar University, Savar, Dhaka</p>
+                <span class="edu-card__grade">CGPA 3.78 / 4.00</span><span class="edu-card__grade">2nd in merit list</span>
+                <ul class="edu-card__years" aria-label="Year-wise results">
+                  <li>Year 1 <b>3.67</b> · 2nd</li>
+                  <li>Year 2 <b>3.70</b> · 3rd</li>
+                  <li>Year 3 <b>3.88</b> · 1st</li>
+                  <li>Year 4 <b>3.84</b> · 2nd</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="edu-card edu-card--logo reveal">
+              <div class="edu-card__logos">
+                <span class="org__logo org__logo--sm org__logo--mono" aria-hidden="true">SHK</span>
+              </div>
+              <div class="edu-card__body">
+                <span class="edu-card__year">2019</span>
+                <h4>Higher Secondary Certificate · Science</h4>
+                <p>Shamsul Haque Khan School and College, Dhaka</p>
+                <span class="edu-card__grade">GPA 5.00 / 5.00</span>
+              </div>
+            </article>
+
+            <article class="edu-card edu-card--logo reveal">
+              <div class="edu-card__logos">
+                <span class="org__logo org__logo--sm"><img src="assets/img/logos/chatkhil.webp" alt="Chatkhil Pachgaon Government High School logo" width="56" height="56" loading="lazy"></span>
+              </div>
+              <div class="edu-card__body">
+                <span class="edu-card__year">2017</span>
+                <h4>Secondary School Certificate · Science</h4>
+                <p>Chatkhil Pachgaon Government High School, Noakhali</p>
+                <span class="edu-card__grade">GPA 4.67 / 5.00</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="edu__col">
+            <h3 class="edu__heading reveal"><i class="fa-solid fa-trophy"></i> Academic Achievements</h3>
+            <ul class="awards">
+              <li class="reveal"><i class="fa-solid fa-medal silver"></i><div><strong>2nd position</strong> — overall B.A. (Honours) result in Philosophy, Jahangirnagar University <span>· CGPA 3.78</span></div></li>
+              <li class="reveal"><i class="fa-solid fa-medal gold"></i><div><strong>1st position</strong> — 3rd-year B.A. (Honours) examination <span>· GPA 3.88</span></div></li>
+              <li class="reveal"><i class="fa-solid fa-medal silver"></i><div><strong>2nd position</strong> — 1st-year and 4th-year B.A. (Honours) examinations</div></li>
+              <li class="reveal"><i class="fa-solid fa-medal bronze"></i><div><strong>3rd position</strong> — 2nd-year B.A. (Honours) examination</div></li>
+              <li class="reveal"><i class="fa-solid fa-star"></i><div><strong>GPA 5.00</strong> — Higher Secondary Certificate, Science <span>· Dhaka Board</span></div></li>
+            </ul>
+
+            <h3 class="edu__heading reveal"><i class="fa-solid fa-people-group"></i> Affiliations</h3>
+            <ul class="chips chips--soft reveal">
+              <li><i class="fa-solid fa-seedling"></i> Member · Deep Ecology Environmental Forum</li>
+              <li><i class="fa-solid fa-building-columns"></i> Department of Philosophy, JU</li>
+            </ul>
+
+            <h3 class="edu__heading reveal"><i class="fa-solid fa-heart"></i> Interests</h3>
+            <ul class="chips chips--soft reveal">
+              <li><i class="fa-solid fa-leaf"></i> Nature &amp; ecology</li>
+              <li><i class="fa-solid fa-book-open"></i> Reading philosophy</li>
+              <li><i class="fa-solid fa-pen-nib"></i> Writing</li>
+              <li><i class="fa-solid fa-chalkboard-user"></i> Teaching</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact reveal">
+          <span class="section__kicker">07 — Contact</span>
+          <h2 class="section__title">Let's talk philosophy</h2>
+          <p>
+            I'm open to research collaborations, graduate opportunities and conversations about environmental
+            philosophy, Spinoza and deep ecology. Email is the best way to reach me.
+          </p>
+          <div class="contact__actions">
+            <a class="btn btn--primary" href="mailto:saimazarin15002@gmail.com?subject=Hello%20Zarin"><i class="fa-solid fa-envelope"></i> saimazarin15002@gmail.com</a>
+            <a class="btn btn--ghost" href="https://deepecologybd.org/the-deef-team/" target="_blank" rel="noopener"><i class="fa-solid fa-seedling"></i> DEEF Team</a>
+          </div>
+          <p class="contact__loc"><i class="fa-solid fa-location-dot"></i> Dhaka, Bangladesh</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Zarin Saima Rithy. Built with plain HTML, CSS &amp; JavaScript.</p>
+      <div class="footer__links">
+        <a href="mailto:saimazarin15002@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://deepecologybd.org/the-deef-team/" target="_blank" rel="noopener" aria-label="DEEF team page"><i class="fa-solid fa-seedling"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" type="button" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
