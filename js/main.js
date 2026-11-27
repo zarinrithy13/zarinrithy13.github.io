@@ -140,22 +140,26 @@
     setTimeout(tick, 600);
   }
 
-  /* ---------- Gallery lightbox ---------- */
-  const lightbox = $('#lightbox');
-  if (lightbox && typeof lightbox.showModal === 'function') {
-    const lbImg = $('img', lightbox);
-    let opener = null;
-    $$('.gallery__btn').forEach(btn => btn.addEventListener('click', () => {
-      const img = $('img', btn);
-      lbImg.src = btn.dataset.full;
-      lbImg.alt = img ? img.alt : '';
-      opener = btn;
-      lightbox.showModal();
-    }));
-    $('.lightbox__close', lightbox).addEventListener('click', () => lightbox.close());
-    // click on the dark backdrop (outside the image) closes too
-    lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.close(); });
-    lightbox.addEventListener('close', () => { lbImg.src = ''; if (opener) opener.focus(); });
+  /* ---------- 3D tilt on hobby cards (desktop pointer only) ---------- */
+  if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+    $$('.tilt').forEach(card => {
+      const MAX = 7; // degrees
+      card.addEventListener('pointermove', e => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width;
+        const py = (e.clientY - r.top) / r.height;
+        card.classList.add('is-tilting');
+        card.style.setProperty('--ry', ((px - .5) * 2 * MAX).toFixed(2) + 'deg');
+        card.style.setProperty('--rx', ((.5 - py) * 2 * MAX).toFixed(2) + 'deg');
+        card.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+        card.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+      });
+      card.addEventListener('pointerleave', () => {
+        card.classList.remove('is-tilting');
+        card.style.setProperty('--rx', '0deg');
+        card.style.setProperty('--ry', '0deg');
+      });
+    });
   }
 
   /* ---------- Footer year ---------- */

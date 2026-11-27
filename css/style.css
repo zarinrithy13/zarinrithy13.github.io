@@ -515,50 +515,164 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .edu-card__logos { display: flex; flex-direction: column; gap: .5rem; flex: none; }
 .edu-card__body { min-width: 0; }
 
-/* ---------- Beyond philosophy: hobbies + gallery ---------- */
-.beyond { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 1.2rem; margin-bottom: 2rem; }
+/* ---------- Beyond philosophy: 3D anime ring, singing wave, tilt cards ---------- */
+.beyond-section { position: relative; overflow: hidden; }
+.beyond-section > .container { position: relative; z-index: 1; }
+
+/* falling sakura petals (pure CSS shapes) */
+.sakura { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.sakura span {
+  position: absolute; top: -40px; width: 14px; height: 10px; opacity: .75;
+  background: linear-gradient(135deg, #ffd3e2, #f39bbd);
+  border-radius: 150% 0 150% 0;
+  animation: petal-fall 16s linear infinite, petal-sway 4s ease-in-out infinite alternate;
+}
+[data-theme="dark"] .sakura span { opacity: .5; }
+.sakura span:nth-child(1)  { left: 4%;  animation-duration: 15s, 4s;   animation-delay: 0s, 0s; }
+.sakura span:nth-child(2)  { left: 14%; animation-duration: 19s, 5s;   animation-delay: -6s, -1s; scale: .8; }
+.sakura span:nth-child(3)  { left: 26%; animation-duration: 17s, 3.6s; animation-delay: -11s, -2s; }
+.sakura span:nth-child(4)  { left: 38%; animation-duration: 21s, 4.4s; animation-delay: -3s, -.5s; scale: .7; }
+.sakura span:nth-child(5)  { left: 50%; animation-duration: 16s, 5.2s; animation-delay: -9s, -3s; }
+.sakura span:nth-child(6)  { left: 61%; animation-duration: 20s, 4s;   animation-delay: -14s, -1.5s; scale: .9; }
+.sakura span:nth-child(7)  { left: 72%; animation-duration: 18s, 3.8s; animation-delay: -5s, -2.5s; }
+.sakura span:nth-child(8)  { left: 82%; animation-duration: 22s, 4.8s; animation-delay: -12s, 0s; scale: .75; }
+.sakura span:nth-child(9)  { left: 91%; animation-duration: 17s, 4.2s; animation-delay: -8s, -3.5s; }
+.sakura span:nth-child(10) { left: 97%; animation-duration: 23s, 5s;   animation-delay: -17s, -1s; scale: .85; }
+@keyframes petal-fall {
+  0%   { top: -40px; rotate: 0deg; }
+  100% { top: 105%;  rotate: 540deg; }
+}
+@keyframes petal-sway { from { margin-left: -24px; } to { margin-left: 24px; } }
+
+.beyond { display: grid; grid-template-columns: 1.35fr 1fr; gap: 1.2rem; align-items: stretch; }
+.beyond__side { display: grid; gap: 1.2rem; grid-template-rows: 1fr auto; }
+
+/* shared hobby card + mouse-driven 3D tilt */
 .hobby {
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;
-  transition: transform .35s var(--ease), border-color .3s, box-shadow .3s;
+  position: relative; overflow: hidden; isolation: isolate;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.6rem;
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--lift, 0px));
+  transition: transform .5s var(--ease), border-color .3s, box-shadow .3s, opacity var(--dur) var(--ease);
 }
-.hobby:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: var(--shadow); }
-.hobby > i { font-size: 1.2rem; color: var(--primary); width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--primary-soft); margin-bottom: .9rem; }
-.hobby h3 { font-size: 1.05rem; margin-bottom: .45rem; }
-.hobby p { font-size: .92rem; color: var(--text-muted); margin: 0 0 .9rem; }
-.hobby .chips li { font-size: .82rem; padding: .38rem .72rem; }
+.hobby.reveal:not(.is-visible) { transform: translateY(26px); }
+.hobby:hover { --lift: -4px; border-color: var(--primary); box-shadow: var(--shadow); }
+.hobby.is-tilting { transition: transform .08s linear, border-color .3s, box-shadow .3s; }
+.hobby__glare {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), var(--primary-soft), transparent 55%);
+}
+.hobby:hover .hobby__glare { opacity: 1; }
+.hobby__head { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1rem; position: relative; }
+.hobby__head > i {
+  flex: none; font-size: 1.2rem; color: var(--primary); width: 46px; height: 46px; border-radius: 13px;
+  display: grid; place-items: center; background: var(--primary-soft);
+}
+.hobby h3 { font-size: 1.12rem; margin: .1rem 0 .3rem; }
+.hobby p { font-size: .93rem; color: var(--text-muted); margin: 0; }
+.hobby .chips li { font-size: .84rem; }
+.hobby__kana {
+  position: absolute; right: -.1em; bottom: -.25em; z-index: -1; pointer-events: none; user-select: none;
+  font-size: clamp(4rem, 9vw, 6.5rem); font-weight: 800; line-height: 1; letter-spacing: -.04em;
+  color: var(--primary); opacity: .07;
+}
 
-.gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-.gallery__item { margin: 0; position: relative; border-radius: var(--radius); overflow: hidden; background: var(--surface-2); border: 1px solid var(--border); }
-.gallery__btn { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
-.gallery__btn img { width: 100%; aspect-ratio: 3 / 4; height: auto; object-fit: cover; transition: transform .8s var(--ease); }
-.gallery__item:hover .gallery__btn img { transform: scale(1.05); }
-.gallery__btn:focus-visible { outline: 3px solid var(--primary); outline-offset: -3px; }
-.gallery__item figcaption {
-  position: absolute; left: .7rem; bottom: .7rem; padding: .3rem .7rem; border-radius: 999px; pointer-events: none;
-  font-size: .78rem; font-weight: 600; color: #fff; background: rgba(10, 24, 40, .6);
-  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+/* manga speed lines behind the anime card */
+.speedlines {
+  position: absolute; inset: -30%; z-index: -1; pointer-events: none; opacity: .5;
+  background: repeating-conic-gradient(from 0deg at 50% 62%, transparent 0deg 4deg, var(--primary-soft) 4deg 5deg);
+  mask-image: radial-gradient(circle at 50% 62%, transparent 18%, #000 40%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle at 50% 62%, transparent 18%, #000 40%, transparent 72%);
+  animation: speed-spin 60s linear infinite;
 }
+@keyframes speed-spin { to { transform: rotate(360deg); } }
 
-.lightbox {
-  border: 0; padding: 0; background: transparent; max-width: min(92vw, 820px); max-height: 92vh; overflow: visible;
+/* 3D rotating ring of anime title cards */
+.ring-stage {
+  --tile-w: 132px; --tile-h: 168px; --ring-r: 205px;
+  position: relative; height: 290px; perspective: 1100px;
+  display: grid; place-items: center; margin-top: .4rem;
 }
-.lightbox::backdrop { background: rgba(5, 14, 24, .85); backdrop-filter: blur(4px); }
-.lightbox img { max-width: 100%; max-height: 88vh; border-radius: var(--radius); box-shadow: 0 30px 60px -20px rgba(0,0,0,.7); }
-.lightbox__close {
-  position: absolute; top: -.9rem; right: -.9rem; width: 42px; height: 42px; border-radius: 50%; border: 0;
-  background: var(--primary); color: var(--primary-ink); box-shadow: var(--shadow); font-size: 1.1rem; z-index: 1;
+.ring-tilt { transform: rotateX(-9deg); transform-style: preserve-3d; }
+.ring {
+  position: relative; width: var(--tile-w); height: var(--tile-h);
+  transform-style: preserve-3d; animation: ring-spin 36s linear infinite;
+}
+.ring-stage:hover .ring, .ring-stage:focus-within .ring { animation-play-state: paused; }
+@keyframes ring-spin { from { transform: rotateY(0deg); } to { transform: rotateY(-360deg); } }
+.ring li {
+  position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: .25rem;
+  padding: .9rem .8rem; border-radius: 16px; color: #fff; overflow: hidden;
+  background:
+    radial-gradient(circle at 80% 15%, rgba(255,255,255,.35), transparent 40%),
+    linear-gradient(160deg, var(--c1), var(--c2));
+  border: 1px solid rgba(255,255,255,.22);
+  box-shadow: 0 18px 30px -16px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.25);
+  transform: rotateY(calc(var(--i) * 40deg)) translateZ(var(--ring-r));
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+}
+.ring li::before { /* halftone dots, a nod to manga print */
+  content: ""; position: absolute; inset: 0; opacity: .18; pointer-events: none;
+  background-image: radial-gradient(rgba(255,255,255,.9) 1px, transparent 1.4px);
+  background-size: 8px 8px;
+  mask-image: linear-gradient(200deg, #000, transparent 60%);
+  -webkit-mask-image: linear-gradient(200deg, #000, transparent 60%);
+}
+.ring li i { position: absolute; top: .85rem; left: .85rem; font-size: 1.35rem; opacity: .95; filter: drop-shadow(0 2px 4px rgba(0,0,0,.3)); }
+.ring li b { font-size: .92rem; line-height: 1.2; letter-spacing: -.01em; text-shadow: 0 1px 6px rgba(0,0,0,.35); position: relative; }
+.ring li span { font-size: .7rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; opacity: .85; position: relative; }
+.ring-floor {
+  position: absolute; left: 50%; bottom: 8px; width: 70%; height: 34px; transform: translateX(-50%);
+  border-radius: 50%; background: radial-gradient(ellipse, rgba(31, 111, 168, .28), transparent 70%); filter: blur(4px);
+}
+[data-theme="dark"] .ring-floor { background: radial-gradient(ellipse, rgba(143, 208, 244, .22), transparent 70%); }
+.hobby .ring-hint { text-align: center; font-size: .78rem; margin-top: .2rem; color: var(--text-muted); }
+.ring-hint i { color: var(--primary); margin-right: .3rem; }
+
+/* singing: floating notes + equaliser */
+.hobby--sing { display: flex; flex-direction: column; justify-content: space-between; }
+.eq { display: flex; align-items: flex-end; gap: 5px; height: 54px; margin-top: .4rem; }
+.eq span {
+  flex: 1; height: 30%; border-radius: 4px 4px 2px 2px;
+  background: linear-gradient(var(--frost), var(--sky));
+  animation: eq-bounce 1.1s ease-in-out infinite alternate;
+}
+.eq span:nth-child(3n)   { animation-duration: .8s; }
+.eq span:nth-child(3n+1) { animation-duration: 1.3s; }
+.eq span:nth-child(4n)   { animation-delay: -.4s; }
+.eq span:nth-child(5n)   { animation-delay: -.7s; }
+.eq span:nth-child(2n+1) { animation-delay: -.2s; }
+@keyframes eq-bounce { 0% { height: 18%; } 50% { height: 90%; } 100% { height: 40%; } }
+.notes { position: absolute; inset: 0; pointer-events: none; z-index: -1; }
+.notes i {
+  position: absolute; bottom: -20px; color: var(--primary); opacity: 0; font-size: 1rem;
+  animation: note-rise 6s ease-in infinite;
+}
+.notes i:nth-child(1) { left: 58%; animation-delay: 0s; }
+.notes i:nth-child(2) { left: 72%; animation-delay: -1.5s; font-size: .8rem; }
+.notes i:nth-child(3) { left: 84%; animation-delay: -3s; font-size: 1.15rem; }
+.notes i:nth-child(4) { left: 66%; animation-delay: -4.5s; font-size: .9rem; }
+@keyframes note-rise {
+  0%   { transform: translateY(0) rotate(-10deg); opacity: 0; }
+  15%  { opacity: .55; }
+  100% { transform: translateY(-190px) rotate(18deg); opacity: 0; }
 }
 
 @media (max-width: 1024px) {
-  .beyond { grid-template-columns: 1fr 1fr; }
-  .hobby--anime { grid-column: 1 / -1; }
-}
-@media (max-width: 860px) {
-  .gallery { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 560px) {
   .beyond { grid-template-columns: 1fr; }
-  .lightbox__close { top: .5rem; right: .5rem; }
+  .beyond__side { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+}
+@media (max-width: 640px) {
+  .beyond__side { grid-template-columns: 1fr; }
+  .ring-stage { --tile-w: 112px; --tile-h: 146px; --ring-r: 160px; height: 240px; }
+  .ring li b { font-size: .82rem; }
+}
+/* very narrow screens and reduced motion: show the titles as a flat grid instead of a ring */
+@media (max-width: 420px), (prefers-reduced-motion: reduce) {
+  .ring-stage { height: auto; perspective: none; display: block; }
+  .ring-tilt { transform: none; }
+  .ring { width: auto; height: auto; animation: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: .6rem; }
+  .ring li { position: relative; inset: auto; min-height: 110px; transform: none; }
+  .ring-floor, .ring-hint, .sakura, .notes { display: none; }
 }
 
 /* ---------- Contact ---------- */

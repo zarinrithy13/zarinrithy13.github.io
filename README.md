@@ -19,14 +19,13 @@ Plain HTML, CSS and JavaScript. No build step.
 ```
 index.html          single-page site
 css/style.css       theme tokens (light/dark), layout, components
-js/main.js          theme toggle, mobile nav, scroll reveal, counters, typing effect, gallery lightbox
+js/main.js          theme toggle, mobile nav, scroll reveal, counters, typing effect, 3D tilt cards
 assets/
   favicon.svg
   img/
     headshot.webp/.png   hero portrait (background removed)
     thesis.webp/.jpg     research section photo
     og-image.png         link preview (1200x630)
-    gallery/             "Beyond Philosophy" photos (3:4, WebP + JPEG, opened in a lightbox)
     logos/               institution logos (WebP, square)
 ```
 
