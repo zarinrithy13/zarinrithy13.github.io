@@ -27,6 +27,7 @@ assets/
     thesis.webp/.jpg     research section photo
     og-image.png         link preview (1200x630)
     logos/               institution logos (WebP, square)
+    anime/               posters for the rotating anime ring in Beyond Philosophy
 ```
 
 ## Adding institution logos

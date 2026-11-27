@@ -162,6 +162,61 @@
     });
   }
 
+  /* ---------- Anime ring: rotate, mark the front card, show its poster behind ---------- */
+  const stage = $('.ring-stage');
+  const ring = stage && $('.ring', stage);
+  if (ring) {
+    const tiles = $$('li', ring);
+    const n = tiles.length;
+    const step = 360 / n;
+    const flat = window.matchMedia('(max-width: 420px), (prefers-reduced-motion: reduce)');
+    const backLayers = $$('.anime-backdrop span');
+    let layer = 0;
+    let front = -1;
+
+    const posterOf = li => { const p = $('.ring__poster', li); return p ? p.style.backgroundImage : ''; };
+
+    function setFront(i) {
+      if (i === front) return;
+      front = i;
+      tiles.forEach((t, k) => t.classList.toggle('is-front', k === i));
+      if (backLayers.length === 2) {
+        layer = 1 - layer;
+        backLayers[layer].style.backgroundImage = posterOf(tiles[i]);
+        backLayers[layer].classList.add('is-on');
+        backLayers[1 - layer].classList.remove('is-on');
+      }
+    }
+
+    // pause while hovered/focused or scrolled out of view
+    let hovered = false, onScreen = true;
+    stage.addEventListener('pointerenter', () => { hovered = true; });
+    stage.addEventListener('pointerleave', () => { hovered = false; });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(es => { onScreen = es[0].isIntersecting; }).observe(stage);
+    }
+
+    const SPEED = 360 / 40000; // one full turn every 40 s
+    let angle = 0, last = performance.now();
+    stage.classList.add('is-js');
+    function frame(now) {
+      const dt = Math.min(now - last, 250); // cap jumps after a hidden tab or a slow frame
+      last = now;
+      if (!flat.matches) {
+        if (!hovered && onScreen) angle = (angle + dt * SPEED) % 360;
+        ring.style.transform = `rotateY(${-angle}deg)`;
+        setFront(Math.round(angle / step) % n);
+      } else if (front !== -1) {
+        front = -1;
+        tiles.forEach(t => t.classList.remove('is-front'));
+        backLayers.forEach(b => b.classList.remove('is-on'));
+      }
+      requestAnimationFrame(frame);
+    }
+    setFront(0);
+    requestAnimationFrame(frame);
+  }
+
   /* ---------- Footer year ---------- */
   $('#year').textContent = new Date().getFullYear();
 

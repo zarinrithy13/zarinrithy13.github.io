@@ -589,7 +589,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* 3D rotating ring of anime title cards */
 .ring-stage {
-  --tile-w: 132px; --tile-h: 168px; --ring-r: 205px;
+  --tile-w: 132px; --tile-h: 168px; --ring-r: 250px; --step: calc(360deg / 11);
   position: relative; height: 290px; perspective: 1100px;
   display: grid; place-items: center; margin-top: .4rem;
 }
@@ -599,6 +599,36 @@ button { font: inherit; color: inherit; cursor: pointer; }
   transform-style: preserve-3d; animation: ring-spin 36s linear infinite;
 }
 .ring-stage:hover .ring, .ring-stage:focus-within .ring { animation-play-state: paused; }
+.ring-stage.is-js .ring { animation: none; } /* rotation driven by main.js so it knows the front card */
+
+/* anime poster on every card; the card facing front shows it in full colour */
+.ring__poster {
+  position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center;
+}
+.ring__poster::after { /* keeps the title readable over any poster */
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,.25) 45%, transparent 70%);
+}
+.ring li::after { /* colour tint over the poster on cards that are not in front */
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(160deg, var(--c1), var(--c2)); opacity: .78;
+  transition: opacity .7s var(--ease);
+}
+.ring li.is-front::after { opacity: 0; }
+.ring li.is-front { border-color: rgba(255,255,255,.55); box-shadow: 0 22px 40px -14px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.25), 0 0 28px -6px var(--c1); }
+
+/* blurred poster of the front anime behind the ring, cross-fading between titles */
+.anime-backdrop { position: absolute; inset: 0; z-index: -2; pointer-events: none; overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent 4%, #000 34%, #000 82%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 4%, #000 34%, #000 82%, transparent);
+}
+.anime-backdrop span {
+  position: absolute; inset: -24px; background-size: cover; background-position: center;
+  filter: blur(5px) saturate(1.1); opacity: 0; transform: scale(1.06);
+  transition: opacity 1.1s ease, transform 6s ease-out;
+}
+.anime-backdrop span.is-on { opacity: .3; transform: scale(1); }
+[data-theme="dark"] .anime-backdrop span.is-on { opacity: .4; }
 @keyframes ring-spin { from { transform: rotateY(0deg); } to { transform: rotateY(-360deg); } }
 .ring li {
   position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: .25rem;
@@ -608,19 +638,19 @@ button { font: inherit; color: inherit; cursor: pointer; }
     linear-gradient(160deg, var(--c1), var(--c2));
   border: 1px solid rgba(255,255,255,.22);
   box-shadow: 0 18px 30px -16px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.25);
-  transform: rotateY(calc(var(--i) * 40deg)) translateZ(var(--ring-r));
+  transform: rotateY(calc(var(--i) * var(--step))) translateZ(var(--ring-r));
   backface-visibility: hidden; -webkit-backface-visibility: hidden;
 }
 .ring li::before { /* halftone dots, a nod to manga print */
-  content: ""; position: absolute; inset: 0; opacity: .18; pointer-events: none;
+  content: ""; position: absolute; inset: 0; opacity: .14; pointer-events: none; z-index: 2;
   background-image: radial-gradient(rgba(255,255,255,.9) 1px, transparent 1.4px);
   background-size: 8px 8px;
   mask-image: linear-gradient(200deg, #000, transparent 60%);
   -webkit-mask-image: linear-gradient(200deg, #000, transparent 60%);
 }
-.ring li i { position: absolute; top: .85rem; left: .85rem; font-size: 1.35rem; opacity: .95; filter: drop-shadow(0 2px 4px rgba(0,0,0,.3)); }
-.ring li b { font-size: .92rem; line-height: 1.2; letter-spacing: -.01em; text-shadow: 0 1px 6px rgba(0,0,0,.35); position: relative; }
-.ring li span { font-size: .7rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; opacity: .85; position: relative; }
+.ring li i { z-index: 3; position: absolute; top: .85rem; left: .85rem; font-size: 1.35rem; opacity: .95; filter: drop-shadow(0 2px 4px rgba(0,0,0,.3)); }
+.ring li b { z-index: 3; font-size: .92rem; line-height: 1.2; letter-spacing: -.01em; text-shadow: 0 1px 6px rgba(0,0,0,.35); position: relative; }
+.ring li > span:not(.ring__poster) { z-index: 3; font-size: .7rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; opacity: .85; position: relative; }
 .ring-floor {
   position: absolute; left: 50%; bottom: 8px; width: 70%; height: 34px; transform: translateX(-50%);
   border-radius: 50%; background: radial-gradient(ellipse, rgba(31, 111, 168, .28), transparent 70%); filter: blur(4px);
@@ -695,7 +725,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
 @media (max-width: 640px) {
   .beyond__side { grid-template-columns: 1fr; }
   .beyond__side > :last-child { grid-column: auto; }
-  .ring-stage { --tile-w: 112px; --tile-h: 146px; --ring-r: 160px; height: 240px; }
+  .ring-stage { --tile-w: 112px; --tile-h: 146px; --ring-r: 205px; height: 240px; }
+  .hobby--anime .ring-stage { min-height: 250px; }
   .ring li b { font-size: .82rem; }
 }
 /* very narrow screens and reduced motion: show the titles as a flat grid instead of a ring */
@@ -703,8 +734,10 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .ring-stage { height: auto; perspective: none; display: block; }
   .ring-tilt { transform: none; }
   .ring { width: auto; height: auto; animation: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: .6rem; }
-  .ring li { position: relative; inset: auto; min-height: 110px; transform: none; }
-  .ring-floor, .ring-hint, .sakura, .notes { display: none; }
+  .ring { transform: none !important; }
+  .ring li { position: relative; inset: auto; min-height: 130px; transform: none; }
+  .ring li::after { opacity: .35; }
+  .ring-floor, .ring-hint, .sakura, .notes, .anime-backdrop { display: none; }
 }
 
 /* ---------- Contact ---------- */
